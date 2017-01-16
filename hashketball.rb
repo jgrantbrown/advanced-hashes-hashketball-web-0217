@@ -1,3 +1,2 @@
 # Write your code here!
-game_hash=Hash.new(0)
-return game_hash
+game_hash=>{:home=>1,:away=>2}
