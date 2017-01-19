@@ -68,7 +68,7 @@ end
 
 def team_colors(team)
     game_hash.map {|location,team_data|
-        team_data.map {|attribute,data| return team_data[:colors] if data==team
+        team_data.map {|attribute,data| return game_hash[location][:colors] if data==team
        }
   }
   end
