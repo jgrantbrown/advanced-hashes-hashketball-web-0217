@@ -1,7 +1,9 @@
-require "pry"
-game_hash=Hash.new
+
+
+
 # Write your code here!
-game_hash={:home=>{:team_name=>"Brooklyn Nets",:colors=>["Black","White"],
+def game_hash
+  hash={:home=>{:team_name=>["Brooklyn Nets"],:colors=>["Black","White"],
 
   :players=>{
     "Alan Anderson"=>{
@@ -21,7 +23,7 @@ game_hash={:home=>{:team_name=>"Brooklyn Nets",:colors=>["Black","White"],
   }
 
 
-  },:away=>{:team_name=>"Charlotte Hornets",:colors=>["Turquoise","Purple"],
+  },:away=>{:team_name=>["Charlotte Hornets"],:colors=>["Turquoise","Purple"],
 
   :players=>{
     "Jeff Adrien"=>{
@@ -40,20 +42,33 @@ game_hash={:home=>{:team_name=>"Brooklyn Nets",:colors=>["Black","White"],
       :number=>33,:shoe=>15, :points=>6,:rebounds=>12,:assits=>12,:steals=>22,:blocks=>5,:slam_dunks=>12}
   }}
   }
-
-
-def good_practices
-  game_hash.each do |location, team_data|
-    #are you ABSOLUTELY SURE what 'location' and 'team data' are? use binding.pry to find out!
-    binding.pry
-      team_data.each do |attribute, data|
-        #are you ABSOLUTELY SURE what 'attribute' and 'team data' are? use binding.pry to find out!
-        binding.pry
-
-        #what is 'data' at each loop through out .each block? when will the following line of code work and when will it break?
-        data.each do |data_item|
-            binding.pry
-      end
-    end
-  end
 end
+
+
+
+def num_points_scored(playername)
+    game_hash.map{|location,team_data|
+        team_data.map{|attribute,data|  if attribute==:players #look in attribute for :players
+           data.map {|player,stats|  if player==playername #string matches player key
+           return stats[:points]
+      end }
+      end }
+          }
+end
+
+def shoe_size(playername)
+    game_hash.map{|location,team_data|
+        team_data.map{|attribute,data|  if attribute==:players #look in attribute for :players
+           data.map {|player,stats|  if player==playername #string matches player key
+           return stats[:shoe]
+      end }
+      end }
+          }
+end
+
+def team_colors(team)
+    game_hash.map {|location,team_data|
+        team_data.map {|attribute,data| return team_data[:colors] if data==team
+       }
+  }
+  end
