@@ -68,7 +68,16 @@ end
 
 def team_colors(team)
     game_hash.map {|location,team_data|
-        team_data.map {|attribute,data| return game_hash[location][:colors] if data==team
+        team_data.map {|attribute,data| return team_data[:colors] if data==team
        }
   }
+  end
+
+  def team_names
+    new_array=[]
+    game_hash.map{|location,team_data|
+      team_data.map{|attribute,data| new_array<<data if attribute==:team_name
+    }
+   }
+   new_array
   end
