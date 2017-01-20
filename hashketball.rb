@@ -66,10 +66,15 @@ def shoe_size(playername)
           }
 end
 
-
-
-  def team_names
+def team_names
   new_array=[]
   game_hash.map{|location,team_data| new_array<<team_data[:team_name]}
   new_array.flatten
+end
+
+def team_colors(team_name)
+  game_hash.map{|location,team_data|
+    team_data.map{|attribute,data| return team_data[:colors]
+    }
+  }
 end
