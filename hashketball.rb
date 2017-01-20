@@ -72,9 +72,28 @@ def team_names
   new_array.flatten
 end
 
+=begin
 def team_colors(team_name)
   game_hash.map{|location,team_data|
-    team_data.map{|attribute,data| return team_data[:colors]
+    team_data.map{|attribute,data| return team_data[:colors] if team_name=team_data[:team_name]
     }
   }
 end
+=end
+def player_numbers(team)
+  if team=="Charlotte Hornets"
+  game_hash[:away][:players].map{|k,v|  v[:number]}
+else
+ game_hash[:home][:players].map{|k,v| v[:number]}
+end
+  end
+
+  def player_stats(playername)
+      game_hash.map{|location,team_data|
+          team_data.map{|attribute,data|  if attribute==:players #look in attribute for :players
+             data.map {|player,stats|  if player==playername #string matches player key
+            return stats
+        end }
+        end }
+          }
+  end
