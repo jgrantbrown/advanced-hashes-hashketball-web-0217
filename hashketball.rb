@@ -3,7 +3,7 @@
 
 # Write your code here!
 def game_hash
-  hash={:home=>{:team_name=>["Brooklyn Nets"],:colors=>["Black","White"],
+  game_hash={:home=>{:team_name=>["Brooklyn Nets"],:colors=>["Black","White"],
 
   :players=>{
     "Alan Anderson"=>{
@@ -66,18 +66,10 @@ def shoe_size(playername)
           }
 end
 
-def team_colors(team)
-    game_hash.map {|location,team_data|
-        team_data.map {|attribute,data| return team_data[:colors] if data==team
-       }
-  }
-  end
+
 
   def team_names
-    new_array=[]
-    game_hash.map{|location,team_data|
-      team_data.map{|attribute,data| new_array<<data if attribute==:team_name
-    }
-   }
-   new_array
-  end
+  new_array=[]
+  game_hash.map{|location,team_data| new_array<<team_data[:team_name]}
+  new_array.flatten
+end
