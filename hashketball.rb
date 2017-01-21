@@ -101,9 +101,6 @@ end
           }
   end
 
-
-
-=begin
   def big_shoe_rebounds
 
       new_array=[ ]
@@ -117,10 +114,9 @@ end
 
       game_hash.collect{|location,team_data|
             team_data.collect{|attribute,data| if  attribute==:players
-            data.collect{|player,stats| puts stats[:rebounds] if biggestshoe==stats[:shoe]
+            data.collect{|player,stats| return stats[:rebounds]  if biggestshoe==stats[:shoe]
             }
           end
           }
       }
       end
-    =end
